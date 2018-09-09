@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Link Shortener</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        $('#form').submit((e) => {
+          e.preventDefault()
+          const $input = $('.link-input')
+          let val = $input.val()
+          $input.val("")
+          val = val.replace(/http:\/\//gi, '')
+          val = val.replace(/https:\/\//gi, '')
+          $.ajax({
+            type: "POST",
+            url: '/api/links/',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({ link: val }),
+            success: (data) => {
+              const { link } = data
+              $('.new-link-wrap').empty()
+              $('.new-link-wrap').append(`<a class="new-link" href="${link}">${link}</a>`)
+              $('.new-link-wrap').append(`<button onClick="copyToClipboard('${link}')">Copy to Clipboard</button>`)
+            }
+          })
+        })
+      })
+
+      //NOTE: copyToClipboard sourced from https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
+      const copyToClipboard = (str) => {
+        const el = document.createElement('textarea');
+        el.value = str;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Link Shortener</h1>
+      <div id="input-wrap">
+        <form id="form">
+          <input class="link-input" type="text">
+          <button id="create-link" type="sumbit">Create Link</button>
+        </form>
+      </div>
+    </header>
+    <section>
+      <div class="new-link-wrap">
+      </div>
+    </section>
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "link-shortener",
+  "version": "1.0.0",
+  "description": "A link shortener for Schireson",
+  "main": "server.js",
+  "scripts": {
+    "npm start": "node server.js"
+  },
+  "author": "Gerald Anekwe",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "ioredis": "^4.0.0"
+  }
+}
