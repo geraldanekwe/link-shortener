@@ -16,4 +16,4 @@ Basic environment requirements
 For the simplicity of recreating this environment, I included a `.env` file with variables.
 This is a big security issue and would never be ok in a production environment.
 
-If you have any questions, please e-mail me: gerald.anekwe.ii@gmail.com#
+If you have any questions, please e-mail me: gerald.anekwe.ii@gmail.com
