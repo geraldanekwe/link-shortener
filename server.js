@@ -42,4 +42,6 @@ app.get('/:hash', (req, res) => {
   })
 })
 
-app.listen(3000)
+app.listen(3000, () => {
+  console.log('App listening at http://localhost:3000')
+})
