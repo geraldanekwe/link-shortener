@@ -21,7 +21,7 @@
             success: (data) => {
               const { link } = data
               $('.new-link-wrap').empty()
-              $('.new-link-wrap').append(`<a class="new-link" href="${link}">${link}</a>`)
+              $('.new-link-wrap').append(`<a class="new-link" href="${link}" target="_blank">${link}</a>`)
               $('.new-link-wrap').append(`<button onClick="copyToClipboard('${link}')">Copy to Clipboard</button>`)
             }
           })
